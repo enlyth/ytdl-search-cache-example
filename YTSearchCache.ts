@@ -151,8 +151,12 @@ module.exports = class YTSearchCache {
        * Set an expiry date as the data from the API might get outdated eventually
        */
 
-      this._client.set(query, JSON.stringify(info), 'EX', CacheOptions.EXPIRE_SECONDS)
-      this._log(`Fetch complete, cached with EX: ${CacheOptions.EXPIRE_SECONDS}`)
+      try {
+        this._client.set(query, JSON.stringify(info), 'EX', CacheOptions.EXPIRE_SECONDS)
+        this._log(`Fetch complete, cached with EX: ${CacheOptions.EXPIRE_SECONDS}`)
+      } catch (err) {
+        reject(new Error('Failed to cache result'))
+      }
 
       resolve(info)
     })
