@@ -48,7 +48,7 @@ module.exports = class YTSearchCache {
   private _stats: CacheStats
 
   constructor () {
-	/**
+    /**
      * Track cache hit, fetch and error count for given instance
      */
     this._stats = {
