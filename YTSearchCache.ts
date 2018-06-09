@@ -47,10 +47,10 @@ module.exports = class YTSearchCache {
   private _getAsyncFromDB: Function
   private _stats: CacheStats
 
-  /**
-   * Track cache hit and fetch count for given instance
-   */
   constructor () {
+	/**
+     * Track cache hit, fetch and error count for given instance
+     */
     this._stats = {
       cacheHits: 0,
       fetchCount: 0,
@@ -84,10 +84,10 @@ module.exports = class YTSearchCache {
   public getSongInfo (input: string) : object {
     /**
      * Normalize the query by trimming, converting
-     * to uppercase and truncate to max length
+     * to lowercase and truncate to max length
      */
     const query: string = input.trim()
-    .toUpperCase()
+    .toLowerCase()
     .substr(0, CacheOptions.MAX_QUERY_LENGTH)
     
     /**
