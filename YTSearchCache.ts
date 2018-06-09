@@ -147,7 +147,7 @@ module.exports = class YTSearchCache {
       ++this._stats.fetchCount
       
       /**
-       * Serialize the reuslt and store in Redis
+       * Serialize the result and store in Redis
        * Set an expiry date as the data from the API might get outdated eventually
        */
 
